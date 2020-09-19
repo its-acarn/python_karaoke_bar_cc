@@ -1,7 +1,7 @@
 import unittest
-from src.rooms import Room 
-from src.guests import Guest 
-from src.songs import Song
+from tests.rooms_test import TestRoom 
+from tests.guests_test import TestGuest 
+from tests.songs_test import TestSong
 
 if __name__ == "__main__":
     unittest.main()
