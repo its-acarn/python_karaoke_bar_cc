@@ -8,3 +8,5 @@ class TestRoom(unittest.TestCase):
 
     def test_room_exists(self):
         self.assertEqual("Tokyo", self.room_1.name)
+        self.assertEqual(8, self.room_1.guest_limit)
+        self.assertEqual(0, len(self.room_1.current_guests))

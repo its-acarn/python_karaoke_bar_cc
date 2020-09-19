@@ -8,3 +8,6 @@ class TestSong(unittest.TestCase):
 
     def test_song_has_artist(self):
         self.assertEqual("Bob Dylan", self.song_1.artist)
+        self.assertEqual("Blowin' in the Wind", self.song_1.name)
+        self.assertEqual(234.00, self.song_1.length)
+        self.assertEqual(False, self.song_1.is_playing)
