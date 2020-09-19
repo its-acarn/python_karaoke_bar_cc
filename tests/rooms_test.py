@@ -1,12 +1,20 @@
 import unittest
 from src.rooms import Room
+from src.guests import Guest
 
 class TestRoom(unittest.TestCase):
 
     def setUp(self):
         self.room_1 = Room("Tokyo", 8)
+        self.jack = Guest("Jack", 100.00)
 
     def test_room_exists(self):
         self.assertEqual("Tokyo", self.room_1.name)
         self.assertEqual(8, self.room_1.guest_limit)
+        self.assertEqual(0, self.room_1.cash)
         self.assertEqual(0, len(self.room_1.current_guests))
+
+    def test_guest_check_in(self):
+        get_guests = self.room_1.guest_check_in(self.room_1, self.jack)
+        self.assertEqual(1, len(self.room_1.current_guests))
+
