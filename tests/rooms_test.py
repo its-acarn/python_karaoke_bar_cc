@@ -26,3 +26,24 @@ class TestRoom(unittest.TestCase):
 
         self.room_1.guest_check_out(self.room_1, self.jack)
         self.assertEqual(1, len(self.room_1.current_guests))
+
+    def test_guest_limit_not_exceeded(self):
+        self.room_1.guest_check_in(self.room_1, self.jack)
+        self.room_1.guest_check_in(self.room_1, self.kalvin)
+        G3 = Guest("Luke", 100.00)
+        self.room_1.guest_check_in(self.room_1, G3)
+        G4 = Guest("Liam", 100.00)
+        self.room_1.guest_check_in(self.room_1, G4)
+        G5 = Guest("Stuart", 100.00)
+        self.room_1.guest_check_in(self.room_1, G5)
+        G6 = Guest("Patrick", 100.00)
+        self.room_1.guest_check_in(self.room_1, G6)
+        G7 = Guest("Marcelo", 100.00)
+        self.room_1.guest_check_in(self.room_1, G7)
+        G8 = Guest("Helder", 100.00)
+        self.room_1.guest_check_in(self.room_1, G8)
+        G9 = Guest("Robin", 100.00)
+        self.room_1.guest_check_in(self.room_1, G9)
+        
+
+        self.assertEqual(8, len(self.room_1.current_guests))
