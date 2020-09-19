@@ -7,6 +7,7 @@ class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room_1 = Room("Tokyo", 8)
         self.jack = Guest("Jack", 100.00)
+        self.kalvin = Guest("Kalvin", 100.00)
 
     def test_room_exists(self):
         self.assertEqual("Tokyo", self.room_1.name)
@@ -15,6 +16,13 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(0, len(self.room_1.current_guests))
 
     def test_guest_check_in(self):
-        get_guests = self.room_1.guest_check_in(self.room_1, self.jack)
-        self.assertEqual(1, len(self.room_1.current_guests))
+        self.room_1.guest_check_in(self.room_1, self.jack)
+        self.room_1.guest_check_in(self.room_1, self.kalvin)
+        self.assertEqual(2, len(self.room_1.current_guests))
 
+    def test_guest_check_out(self):
+        self.room_1.guest_check_in(self.room_1, self.jack)
+        self.room_1.guest_check_in(self.room_1, self.kalvin)
+
+        self.room_1.guest_check_out(self.room_1, self.jack)
+        self.assertEqual(1, len(self.room_1.current_guests))
