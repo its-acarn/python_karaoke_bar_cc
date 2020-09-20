@@ -5,6 +5,8 @@ class Room:
         self.guest_limit = guest_limit
         self.cash = 0
         self.current_guests = []
+        self.current_song = None
+        self.recently_played = []
 
     def guest_check_in(self, guest):
         if len(self.current_guests) >= self.guest_limit:
@@ -15,5 +17,9 @@ class Room:
     def guest_check_out(self, guest):
         self.current_guests.remove(guest)
 
-    # def guest_limit_check(self, room, guest):
+    def add_song_to_room(self, song):
+        if self.current_song != None:
+            self.recently_played.append(self.current_song)
+        
+        self.current_song = song
        

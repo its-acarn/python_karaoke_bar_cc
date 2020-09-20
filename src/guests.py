@@ -5,3 +5,5 @@ class Guest:
         self.money = money
 
     
+
+    
