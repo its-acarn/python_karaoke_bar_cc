@@ -7,6 +7,7 @@ class Room:
         self.current_guests = []
         self.current_song = None
         self.recently_played = []
+        self.last_played = None
 
     def guest_check_in(self, guest):
         if len(self.current_guests) >= self.guest_limit:
@@ -22,4 +23,8 @@ class Room:
             self.recently_played.append(self.current_song)
         
         self.current_song = song
-       
+    
+    def find_last_played(self):
+        if self.recently_played != []:
+            self.last_played = self.recently_played[-1]
+
