@@ -10,8 +10,6 @@ class Room:
         self.recently_played = []
         self.last_played = None
 
-    def guest_check_out(self, guest):
-        self.current_guests.remove(guest)
 
     def add_song_to_room(self, song):
         if self.current_song != None:
@@ -19,15 +17,22 @@ class Room:
         
         self.current_song = song
     
+
     def find_last_played(self):
         if self.recently_played != []:
             self.last_played = self.recently_played[-1]
+
 
     def add_guest_to_room(self, guest):
         if len(self.current_guests) >= self.guest_limit:
             return f"Sorry {guest.name}, the room {self.name} is currently full."
         else:
             self.current_guests.append(guest)
+
+
+    def remove_guest_from_room(self, guest):
+        self.current_guests.remove(guest)
+    
 
     def take_entry_price_from_guest(self, guest):
         if guest.money >= self.entry_price:
@@ -36,7 +41,14 @@ class Room:
         else:
             return "You do not have enough money to enter this room."
 
+
     def guest_check_in(self, guest):
-        pass
+        self.add_guest_to_room(guest)
+        self.take_entry_price_from_guest(guest)
+        guest.pay_to_enter_room(self)
+        guest.update_guest_current_room(self)
         
+
+    def guest_check_out(self, guest):
+        self.remove_guest_from_room(guest)
 

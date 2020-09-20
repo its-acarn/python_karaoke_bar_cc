@@ -18,12 +18,6 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(10.00, self.room_1.entry_price)
         self.assertEqual(0, len(self.room_1.current_guests))
 
-    # def test_guest_check_out(self):
-    #     self.room_1.guest_check_in(self.jack)
-    #     self.room_1.guest_check_in(self.kalvin)
-
-    #     self.room_1.guest_check_out(self.jack)
-    #     self.assertEqual(1, len(self.room_1.current_guests))
 
     def test_guest_limit_not_exceeded(self):
         self.room_1.add_guest_to_room(self.jack)
@@ -61,6 +55,17 @@ class TestRoom(unittest.TestCase):
         self.room_1.add_guest_to_room(self.kalvin)
         self.assertEqual(2, len(self.room_1.current_guests))
 
+    def test_remove_guest_from_room(self):
+        self.room_1.guest_check_in(self.jack)
+        self.room_1.guest_check_in(self.kalvin)
+
+        self.room_1.remove_guest_from_room(self.jack)
+        self.assertEqual(1, len(self.room_1.current_guests))
+
     def test_take_entry_price_from_guest(self):
         self.room_1.take_entry_price_from_guest(self.jack)
         self.assertEqual(10, self.room_1.cash)
+
+    def test_guest_check_in(self):
+        self.room_1.guest_check_in(self.jack)
+        self.assertEqual(1, len(self.room_1.current_guests))
