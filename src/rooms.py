@@ -10,12 +10,6 @@ class Room:
         self.recently_played = []
         self.last_played = None
 
-    def guest_check_in(self, guest):
-        if len(self.current_guests) >= self.guest_limit:
-            return f"Sorry {guest.name}, the room {self.name} is currently full."
-        else:
-            self.current_guests.append(guest)
-
     def guest_check_out(self, guest):
         self.current_guests.remove(guest)
 
@@ -28,4 +22,14 @@ class Room:
     def find_last_played(self):
         if self.recently_played != []:
             self.last_played = self.recently_played[-1]
+
+    def add_guest_to_room(self, guest):
+        if len(self.current_guests) >= self.guest_limit:
+            return f"Sorry {guest.name}, the room {self.name} is currently full."
+        else:
+            self.current_guests.append(guest)
+
+    def guest_check_in(self, guest):
+        pass
+        
 

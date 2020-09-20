@@ -18,25 +18,20 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(10.00, self.room_1.entry_price)
         self.assertEqual(0, len(self.room_1.current_guests))
 
-    def test_guest_check_in(self):
-        self.room_1.guest_check_in(self.jack)
-        self.room_1.guest_check_in(self.kalvin)
-        self.assertEqual(2, len(self.room_1.current_guests))
+    # def test_guest_check_out(self):
+    #     self.room_1.guest_check_in(self.jack)
+    #     self.room_1.guest_check_in(self.kalvin)
 
-    def test_guest_check_out(self):
-        self.room_1.guest_check_in(self.jack)
-        self.room_1.guest_check_in(self.kalvin)
-
-        self.room_1.guest_check_out(self.jack)
-        self.assertEqual(1, len(self.room_1.current_guests))
+    #     self.room_1.guest_check_out(self.jack)
+    #     self.assertEqual(1, len(self.room_1.current_guests))
 
     def test_guest_limit_not_exceeded(self):
-        self.room_1.guest_check_in(self.jack)
-        self.room_1.guest_check_in(self.kalvin)
+        self.room_1.add_guest_to_room(self.jack)
+        self.room_1.add_guest_to_room(self.kalvin)
         stuart = Guest("Stuart", 100.00)
-        self.room_1.guest_check_in(stuart)
+        self.room_1.add_guest_to_room(stuart)
         liam = Guest("Liam", 100.00)
-        self.room_1.guest_check_in(liam)
+        self.room_1.add_guest_to_room(liam)
         
         self.assertEqual(3, len(self.room_1.current_guests))
 
@@ -60,3 +55,8 @@ class TestRoom(unittest.TestCase):
         self.room_1.add_song_to_room(song_2)
         self.room_1.find_last_played()
         self.assertEqual(self.song_1, self.room_1.last_played)
+
+    def test_add_guest_to_room(self):
+        self.room_1.add_guest_to_room(self.jack)
+        self.room_1.add_guest_to_room(self.kalvin)
+        self.assertEqual(2, len(self.room_1.current_guests))
