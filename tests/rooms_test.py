@@ -60,3 +60,8 @@ class TestRoom(unittest.TestCase):
         self.room_1.add_guest_to_room(self.jack)
         self.room_1.add_guest_to_room(self.kalvin)
         self.assertEqual(2, len(self.room_1.current_guests))
+
+    def test_take_entry_price_from_guest(self):
+        self.room_1.take_entry_price_from_guest(self.jack)
+        self.assertEqual(90, self.jack.money)
+        self.assertEqual(10, self.room_1.cash)
