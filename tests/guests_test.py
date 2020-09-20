@@ -13,8 +13,11 @@ class TestGuest(unittest.TestCase):
         self.assertEqual(100.00, self.jack.money)
         self.assertEqual(None, self.jack.current_room)
     
-    def test_guest_in_room(self):
+    def test_guest_current_room(self):
         self.room_1.guest_check_in(self.jack)
-        self.jack.guest_in_room(self.room_1)
-        self.assertEqual(self.room_1, self.jack.current_room)
-        # print(self.room_1.current_guests[0].name)
+        get_room = self.jack.find_guest_current_room(self.room_1)
+        self.assertEqual(self.room_1, get_room)
+
+        self.room_1.guest_check_out(self.jack)
+        get_room = self.jack.find_guest_current_room(self.room_1)
+        self.assertEqual(None, get_room)
