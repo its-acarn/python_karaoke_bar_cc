@@ -21,3 +21,7 @@ class TestGuest(unittest.TestCase):
     #     self.room_1.guest_check_out(self.jack)
     #     get_room = self.jack.find_guest_current_room(self.room_1)
     #     self.assertEqual(None, get_room)
+
+    def test_pay_to_enter_room(self):
+        self.jack.pay_to_enter_room(self.room_1)
+        self.assertEqual(90, self.jack.money)

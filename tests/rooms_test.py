@@ -63,5 +63,4 @@ class TestRoom(unittest.TestCase):
 
     def test_take_entry_price_from_guest(self):
         self.room_1.take_entry_price_from_guest(self.jack)
-        self.assertEqual(90, self.jack.money)
         self.assertEqual(10, self.room_1.cash)
