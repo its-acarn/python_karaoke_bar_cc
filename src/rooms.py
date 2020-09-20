@@ -4,6 +4,7 @@ class Room:
         self.name = name
         self.guest_limit = guest_limit
         self.cash = 0
+        self.entry_price = 10.00
         self.current_guests = []
         self.current_song = None
         self.recently_played = []

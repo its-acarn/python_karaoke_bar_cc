@@ -15,6 +15,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual("Tokyo", self.room_1.name)
         self.assertEqual(3, self.room_1.guest_limit)
         self.assertEqual(0, self.room_1.cash)
+        self.assertEqual(10.00, self.room_1.entry_price)
         self.assertEqual(0, len(self.room_1.current_guests))
 
     def test_guest_check_in(self):
