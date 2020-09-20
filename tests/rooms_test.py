@@ -51,3 +51,11 @@ class TestRoom(unittest.TestCase):
         self.assertEqual("S Club 7", self.room_1.current_song.artist)
         self.assertEqual(1, len(self.room_1.recently_played))
         self.assertEqual("Bob Dylan", self.room_1.recently_played[0].artist)
+
+    def test_find_last_played(self):
+        self.assertEqual(None, self.room_1.last_played)
+        self.room_1.add_song_to_room(self.song_1)
+        song_2 = Song("Bob Dylan", "Blowin' in the Wind")
+        self.room_1.add_song_to_room(song_2)
+        self.room_1.find_last_played()
+        self.assertEqual(self.song_1, self.room_1.last_played)

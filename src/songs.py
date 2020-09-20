@@ -5,6 +5,7 @@ class Song:
         self.name = name
         self.is_playing = False
 
+    # add this function to add_song_to_room at some stage
     def change_song_status(self, room):
         if self == room.current_song:
             self.is_playing = True
