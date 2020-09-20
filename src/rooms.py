@@ -32,12 +32,12 @@ class Room:
 
     def remove_guest_from_room(self, guest):
         self.current_guests.remove(guest)
-    
+        guest.current_room = None
+
 
     def take_entry_price_from_guest(self, guest):
         if guest.money >= self.entry_price:
             self.cash += self.entry_price
-            guest.money -= self.entry_price
         else:
             return "You do not have enough money to enter this room."
 
@@ -46,7 +46,7 @@ class Room:
         self.add_guest_to_room(guest)
         self.take_entry_price_from_guest(guest)
         guest.pay_to_enter_room(self)
-        guest.update_guest_current_room(self)
+        guest.current_room = self
         
 
     def guest_check_out(self, guest):

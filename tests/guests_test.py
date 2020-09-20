@@ -13,16 +13,6 @@ class TestGuest(unittest.TestCase):
         self.assertEqual("Jack", self.jack.name)
         self.assertEqual(100.00, self.jack.money)
         self.assertEqual(None, self.jack.current_room)
-    
-
-    def test_update_guest_current_room(self):
-        self.room_1.guest_check_in(self.jack)
-        self.jack.update_guest_current_room(self.room_1)
-        self.assertEqual(self.room_1, self.jack.current_room)
-
-        # self.room_1.guest_check_out(self.jack)
-        # get_room = self.jack.update_guest_current_room(self.room_1)
-        # self.assertEqual(None, get_room)
 
 
     def test_pay_to_enter_room(self):
