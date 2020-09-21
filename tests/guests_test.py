@@ -6,6 +6,7 @@ class TestGuest(unittest.TestCase):
 
     def setUp(self):
         self.jack = Guest("Jack", 100.00)
+        self.kalvin = Guest("Kalvin", 5.00)
         self.room_1 = Room("Tokyo", 3)
 
 
@@ -18,3 +19,7 @@ class TestGuest(unittest.TestCase):
     def test_pay_to_enter_room(self):
         self.jack.pay_to_enter_room(self.room_1)
         self.assertEqual(90, self.jack.money)
+
+    def test_pay_to_enter_room__reject(self):
+        get = self.kalvin.pay_to_enter_room(self.room_1)
+        self.assertEqual("Not enough money.", get)
