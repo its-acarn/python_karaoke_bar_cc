@@ -18,7 +18,8 @@ class TestGuest(unittest.TestCase):
 
     def test_pay_to_enter_room(self):
         self.jack.pay_to_enter_room(self.room_1)
-        self.assertEqual(90, self.jack.money)
+        self.assertEqual(90.00, self.jack.money)
+
 
     def test_pay_to_enter_room__reject(self):
         get = self.kalvin.pay_to_enter_room(self.room_1)

@@ -71,13 +71,13 @@ class TestRoom(unittest.TestCase):
 
     def test_take_entry_price_from_guest(self):
         self.room_1.take_entry_price_from_guest(self.jack)
-        self.assertEqual(10, self.room_1.cash)
+        self.assertEqual(10.00, self.room_1.cash)
 
 
     def test_guest_check_in(self):
         self.room_1.guest_check_in(self.jack)
-        self.assertEqual(10.0, self.room_1.cash)
-        self.assertEqual(90.0, self.jack.money)
+        self.assertEqual(10.00, self.room_1.cash)
+        self.assertEqual(90.00, self.jack.money)
         self.assertEqual(self.room_1, self.jack.current_room)
         self.assertEqual(1, len(self.room_1.current_guests))
 
@@ -85,15 +85,15 @@ class TestRoom(unittest.TestCase):
     def test_guest_check_out(self):
         self.room_1.guest_check_in(self.jack)
         self.room_1.guest_check_in(self.kalvin)
-        self.assertEqual(20.0, self.room_1.cash)
-        self.assertEqual(90.0, self.jack.money)
-        self.assertEqual(90.0, self.kalvin.money)
+        self.assertEqual(20.00, self.room_1.cash)
+        self.assertEqual(90.00, self.jack.money)
+        self.assertEqual(90.00, self.kalvin.money)
         self.assertEqual(self.room_1, self.jack.current_room)
         self.assertEqual(self.room_1, self.kalvin.current_room)
         self.assertEqual(2, len(self.room_1.current_guests))
 
         self.room_1.guest_check_out(self.jack)
-        self.assertEqual(20.0, self.room_1.cash)
+        self.assertEqual(20.00, self.room_1.cash)
         self.assertEqual(None, self.jack.current_room)
         self.assertEqual(self.room_1, self.kalvin.current_room)
         self.assertEqual(1, len(self.room_1.current_guests))
