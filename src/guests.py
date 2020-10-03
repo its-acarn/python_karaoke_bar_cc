@@ -6,9 +6,9 @@ class Guest:
         self.current_room = None
 
                 
-    def pay_to_enter_room(self, room):
-        if self.money >= room.entry_price:
-            self.money -= room.entry_price
+    def pay_to_enter_room(self, room_cost):
+        if self.money >= room_cost:
+            self.money -= room_cost
         else:
             return "Not enough money."
 

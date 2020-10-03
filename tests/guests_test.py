@@ -10,7 +10,7 @@ class TestGuest(unittest.TestCase):
         self.room_1 = Room("Tokyo", 3)
 
 
-    def test_guest_exists(self):
+    def test_guest_has_name_money_room(self):
         self.assertEqual("Jack", self.jack.name)
         self.assertEqual(100.00, self.jack.money)
         self.assertEqual(None, self.jack.current_room)
